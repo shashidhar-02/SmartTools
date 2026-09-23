@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  :root.dark {
+    color-scheme: dark;
+  }
+
+  html {
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #1e293b;
+    background-color: #f8fafc;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  .dark body,
+  :root.dark body {
+    color: #f1f5f9;
+    background-color: #0b0f19;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Ensure inputs on mobile don't trigger iOS auto-zoom */
+  @media (max-width: 640px) {
+    input, select, textarea {
+      font-size: 16px !important;
+    }
+  }
+
+  /* Custom scrollbar hiding utility */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Form controls inside dark mode */
+  .dark input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="submit"]):not([type="button"]),
+  .dark select,
+  .dark textarea {
+    background-color: #0f172a;
+    border-color: #334155;
+    color: #f8fafc;
+  }
+
+  .dark input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="submit"]):not([type="button"])::placeholder,
+  .dark textarea::placeholder {
+    color: #64748b;
+  }
+
+  .dark select option {
+    background-color: #0f172a;
+    color: #f8fafc;
+  }
+
+  /* Calculator card headings and labels in dark mode */
+  .dark .lg\:col-span-7 h3,
+  .dark .lg\:col-span-7 h4 {
+    color: #f8fafc;
+    border-color: #1e293b;
+  }
+
+  .dark .lg\:col-span-7 label {
+    color: #cbd5e1;
+  }
+}
+
+/* Print styles for universal clean printing */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  nav, footer, .no-print, [role="dialog"], .ad-banner {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .print-clean {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}

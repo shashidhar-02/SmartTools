@@ -1,0 +1,6 @@
+{
+  "name": "SmartTools Hub",
+  "description": "All-in-One Calculator, Converter, Data & Utility Hub with universal instant PDF export, CSV download, and shareable results.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

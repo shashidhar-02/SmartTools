@@ -1,0 +1,26 @@
+# SmartTools Hub - Robots.txt
+User-agent: *
+Allow: /
+Allow: /calculators/
+Allow: /converters/
+Allow: /pdf/
+Allow: /finance
+Allow: /salary
+Allow: /business
+Allow: /student
+Allow: /math
+Allow: /date
+Allow: /health
+Allow: /construction
+Allow: /vehicle
+Allow: /agriculture
+Allow: /statistics
+Allow: /technology
+Allow: /everyday
+Allow: /currency
+
+# Internal Development & Audit tools
+Disallow: /__seo-audit
+Disallow: /api/
+
+Sitemap: https://smarttools.app/sitemap.xml

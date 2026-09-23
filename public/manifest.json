@@ -1,0 +1,16 @@
+{
+  "short_name": "SmartTools",
+  "name": "SmartTools Hub - All-in-One Calculators & Utility Hub",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232563eb'/><path d='M25 40h50v6H25zm0 14h30v6H25zm0 14h40v6H25z' fill='white'/><circle cx='68' cy='61' r='9' fill='%2338bdf8'/><path d='M68 56v10m-5-5h10' stroke='white' stroke-width='2' stroke-linecap='round'/></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0f172a",
+  "theme_color": "#2563eb",
+  "display": "standalone",
+  "orientation": "portrait"
+}
