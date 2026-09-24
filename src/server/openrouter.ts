@@ -9,7 +9,7 @@
  * 5. Deterministic Local Calculators: Calculators calculate entirely client-side; AI is strictly optional.
  */
 
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 
 export const PRIMARY_FREE_MODEL = 'openrouter/free';
 export const OPENROUTER_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';

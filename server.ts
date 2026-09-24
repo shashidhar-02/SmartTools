@@ -1,13 +1,17 @@
 import express from 'express';
 import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
-import { handleAiRequest, handleAiHealth } from './src/server/openrouter';
+import { handleAiRequest, handleAiHealth } from './src/server/openrouter.ts';
 
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
-const isProd = process.env.NODE_ENV === 'production';
 
 app.use(express.json({ limit: '1mb' }));
 
@@ -27,13 +31,18 @@ app.get('/api/analytics/demand-summary', (req, res) => {
 });
 
 async function startServer() {
-  if (isProd) {
-    const distPath = path.resolve(__dirname, 'dist');
+  const distPath = path.resolve(__dirname, 'dist');
+  const distIndexHtml = path.resolve(distPath, 'index.html');
+  const hasDist = fs.existsSync(distIndexHtml);
+
+  if (hasDist) {
+    console.log(`[SmartTools Hub] Serving production static build from ${distPath}`);
     app.use(express.static(distPath));
     app.get('*', (req, res) => {
-      res.sendFile(path.resolve(distPath, 'index.html'));
+      res.sendFile(distIndexHtml);
     });
   } else {
+    console.log(`[SmartTools Hub] Serving development mode via Vite middleware`);
     const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
       server: {
@@ -47,7 +56,7 @@ async function startServer() {
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`[SmartTools Hub] Server running on http://0.0.0.0:${PORT} (Mode: ${isProd ? 'production' : 'development'})`);
+    console.log(`[SmartTools Hub] Server running on http://0.0.0.0:${PORT}`);
     console.log(`[OpenRouter Policy] Strict FREE-ONLY active (Primary: openrouter/free)`);
   });
 }
