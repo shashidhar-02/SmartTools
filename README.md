@@ -1,7 +1,8 @@
 # SmartTools
 
 SmartTools is an open-source TypeScript application that brings useful tools together in one place.
-website:https://smarttools-hub-2.ai.studio/
+'''
+website for all your problems:https://smarttools-hub-2.ai.studio/
 ## Development
 
 ```bash
